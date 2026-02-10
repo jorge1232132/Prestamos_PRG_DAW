@@ -18,7 +18,17 @@ public class prestamo {
                 throws usuariosancionadoexception {
 
 
+            if (nombre == null || nombre.isEmpty()) {
+                throw new usuariosancionadoexception("El nombre no puede estar vacío");
+            }
 
+            if (email == null || !email.contains("@") || !email.contains(".")) {
+                throw new usuariosancionadoexception("El email no es válido");
+            }
+
+            if (numeroSocio == null || !numeroSocio.matches("SOC\\d{5}")) {
+
+            }
 
 
 
