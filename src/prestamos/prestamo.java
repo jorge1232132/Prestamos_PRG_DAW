@@ -14,12 +14,30 @@ public class prestamo {
         private boolean sancionado;
         private LocalDate fechaFinSancion;
 
-        public Usuario(String nombre, String email, String numeroSocio, LocalDate fechaRegistro) {
+        public Usuario(String nombre, String email, String numeroSocio, LocalDate fechaRegistro)
+                throws usuariosancionadoexception {
+
+
+
+
+
+
+
+
+
+
+
 
 
         }
     }
     }
+
+
+
+
+
+
 
 
 
