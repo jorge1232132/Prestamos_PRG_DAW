@@ -26,22 +26,33 @@ public class prestamo {
                 throw new usuariosancionadoexception("El email no es válido");
             }
 
-            if (numeroSocio == null || !numeroSocio.matches("SOC\\d{5}")) {
+            if (numeroSocio == null || numeroSocio.length() != 8 ||
+                    !numeroSocio.startsWith("SOC"))
+                throw new usuariosancionadoexception("Número de socio incorrecto");
 
+            if (fechaRegistro == null || fechaRegistro.isAfter(LocalDate.now()))
+                throw new usuariosancionadoexception("Fecha de registro inválida.");
+
+            this.nombre = nombre;
+            this.email = email;
+            this.numeroSocio = numeroSocio;
+            this.fechaRegistro = fechaRegistro;
+            this.sancionado = false;
+            this.fechaFinSancion = null;
+            }
             }
 
+            ;
 
+     public void sancionar  {
 
-
-
-
-
-
-
-
-        }
     }
-    }
+}
+
+
+
+
+
 
 
 
