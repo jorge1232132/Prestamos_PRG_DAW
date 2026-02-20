@@ -71,7 +71,7 @@ public class prestamo {
         this.fechaDevolucionReal = fecha;
     }
 
-    public int calculaDiasRetraso() {
+    public int calculaDiasretraso() {
         LocalDate comparo = (fechaDevolucionReal != null) ? fechaDevolucionReal : LocalDate.now();
 
         if (!comparo.isAfter(fechaDevolucionPrevista)) return 0;

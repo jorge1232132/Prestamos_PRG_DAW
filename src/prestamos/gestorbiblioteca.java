@@ -93,7 +93,7 @@ public class gestorbiblioteca {
                 prestamos[i].registrarDevolucion(fechaDevolucion);
 
                 // sanciona 1 día por cada día de retraso
-                int retraso = prestamos[i].calculaDiasRetraso();
+                int retraso = prestamos[i].calculaDiasretraso();
                 if (retraso > 0) {
                     try {
                         prestamos[i].getSocio().sancionar(retraso);

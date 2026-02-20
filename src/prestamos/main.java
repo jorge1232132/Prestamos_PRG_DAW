@@ -2,36 +2,68 @@ package prestamos;
 
 import java.time.LocalDate;
 
+import java.util.Scanner;
+
 public class main {
 
     public static void main(String[] args) {
 
-        try {
+        Scanner sc = new Scanner(System.in);
+        gestorbiblioteca gestor = new gestorbiblioteca();
 
-            // Crear usuario
-            usuario u1 = new usuario(
-                    "Mario",
-                    "mario@gmail.com",
-                    "SOC00001",
-                    LocalDate.now()
-            );
+        int op = 0;
 
-            System.out.println("Usuario creado:");
-            System.out.println(u1);
+        while (op != 8) {
 
-            // Sancionar 5 días
-            u1.sancionar(5);
-            System.out.println("\nUsuario sancionado:");
-            System.out.println(u1);
+            System.out.println("\n==== MENU BIBLIOTECA ====");
+            System.out.println("1. Registrar nuevo usuario");
+            System.out.println("2. Realizar préstamo del libro");
+            System.out.println("3. Devolver el  libro");
+            System.out.println("4. Consultar estado de usuario");
+            System.out.println("5. Mostrar préstamos activos");
+            System.out.println("6. Mostrar usuarios sancionados");
+            System.out.println("7. Actualizar sanciones");
+            System.out.println("8. Salir");
+            System.out.print("Opción: ");
 
-            // Quitar sanción
-            u1.levantarsancionar();
-            System.out.println("\nUsuario tras levantar sanción:");
-            System.out.println(u1);
+            try {
+                op = Integer.parseInt(sc.nextLine());
+            } catch (Exception e) {
+                op = 0;
+            }
 
-        } catch (usuariosancionadoexception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            // 1) Registrar nuevo  usuario
+            if (op == 1) {
+                try {
+                    System.out.print("Nombre: ");
+                    String nombre = sc.nextLine();
+
+                    System.out.print("Email: ");
+                    String email = sc.nextLine();
+
+                    System.out.print("Número socio (SOC00001): ");
+                    String numSocio = sc.nextLine();
+
+                    usuario u = new usuario(nombre, email, numSocio, LocalDate.now());
+                    gestor.registrarUsuario(u);
+
+                    System.out.println(" Usuario registrado.");
+                } catch (Exception e) {
+                    System.out.println(" Error: " + e.getMessage());
+                }
+            }
+
+
+
+
+
+
+
+
+
         }
 
+
     }
+
 }
