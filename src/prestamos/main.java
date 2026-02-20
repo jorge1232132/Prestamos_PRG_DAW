@@ -53,10 +53,45 @@ public class main {
                 }
             }
 
+            // 2) Realizar préstamo
+            if (op == 2) {
+                try {
+                    System.out.print("Código libro (LIB0001) ");
+                    String codigoLibro = sc.nextLine();
 
+                    System.out.print("Título libro ");
+                    String titulo = sc.nextLine();
 
+                    System.out.print("Código socio (SOC00001): ");
+                    String codigoSocio = sc.nextLine();
 
+                    usuario u = gestor.buscarUsuario(codigoSocio);
+                    if (u == null) {
+                        System.out.println(" No existe ese usuario");
+                    } else {
+                        prestamo p = gestor.realizarPrestamo(codigoLibro, titulo, LocalDate.now(), u);
+                        System.out.println(" Préstamo creado");
+                        System.out.println(p);
+                    }
+                } catch (Exception e) {
+                    System.out.println(" Error: " + e.getMessage());
+                }
+            }
 
+            // 3) Devolver el  libro
+            if (op == 3) {
+                try {
+                    System.out.print("Código libro (LIB0001) ");
+                    String codigoLibro = sc.nextLine();
+
+                    boolean ok = gestor.devolverLibro(codigoLibro, LocalDate.now());
+
+                    if (ok) System.out.println(" Libro devuelto");
+                    else System.out.println("" + "No hay préstamo activo con ese código");
+                } catch (Exception e) {
+                    System.out.println(" Error: " + e.getMessage());
+                }
+            }
 
 
 
